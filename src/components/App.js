@@ -1,52 +1,87 @@
+import React from 'react';
 
 import Header from './Header';
 import Footer from './Footer';
 import Main from './Main';
+import PopUpWithForm from './PopUpWithForm';
+
+import constants from '../utils/constants.js';
 
 function App() {
+
+const [isProfilePopupOpened, setIsProfilePopupOpened] = React.useState(false);
+const [isCardPopupOpened, setIsCardPopupOpened] = React.useState(false);
+const [isAratarPopupOpened, setIsAvatarPopupOpened] = React.useState(false);
+
+
+
+function handlePopupClick(evt) {
+    if((evt.target.classList.contains('popup') || evt.target.classList.contains('popup__close-btn')) && evt.button === constants.MOUSE_LEFT_BTN_CODE){
+        closeAllPopups();
+    }
+}
+
+function handleEditProfileClick() {
+    setIsProfilePopupOpened(true);
+}
+
+function handleAddCardClick() {
+    setIsCardPopupOpened(true);
+}
+
+function handleEditAvatarClick(){
+    setIsAvatarPopupOpened(true);
+}
+
+  function closeAllPopups() {
+    setIsProfilePopupOpened(false);
+    setIsCardPopupOpened(false);
+    setIsAvatarPopupOpened(false);
+  }
+
+
+
+
+  React.useEffect(() => {
+
+    if(isProfilePopupOpened || isCardPopupOpened || isAratarPopupOpened){
+        function escHandler(evt) {
+            if(evt.key === constants.ESCAPE_KEY)
+            closeAllPopups();
+        };
+        document.addEventListener('keydown', escHandler);
+        return () => {
+            document.removeEventListener('keydown', escHandler);
+        };
+    }
+
+
+  }, [isProfilePopupOpened, isCardPopupOpened, isAratarPopupOpened]);
+
+
   return (
-    <div class="body">
-    <div class="root">
+    <div className="body">
+    <div className="root">
         <Header />
-        <Main />
+        <Main handleEditProfileClick={handleEditProfileClick} handleAddCardClick={handleAddCardClick} handleEditAvatarClick={handleEditAvatarClick} />
         <Footer />
-        <div id="profile-edit-popup" class="popup">
-            <div class="popup__content">
-                <button class="popup__close-btn" type="button" aria-label="close"></button>
-                <form class="popup__content-form" name="popup__content-form" novalidate>
-                    <h3 class="popup__header">Редактировать профиль</h3>
-                    <input type="text" class="popup__input popup__input_control_profile-name" placeholder="Имя" name="name" minlength="2" maxlength="40" required />
-                    <span class="popup__input-error name-error"></span>
-                    <input type="text" class="popup__input popup__input_control_profile-job" placeholder="О себе" name="about" minlength="2" maxlength="200" required />
-                    <span class="popup__input-error about-error"></span>
-                    <button class="popup__save-btn" type="submit">Сохранить</button>
-                </form>
-            </div>
-        </div>
-        <div id="card-edit-popup" class="popup">
-            <div class="popup__content">
-                <button class="popup__close-btn" type="button" aria-label="close"></button>
-                <form novalidate class="popup__content-form" name="popup__content-form" >
-                    <h3 class="popup__header">Новое место</h3>
-                    <input type="text" class="popup__input popup__input_control_card-name" placeholder="Название" name="card-name" minlength="2" maxlength="30" required />
-                    <span class="popup__input-error card-name-error"></span>
-                    <input type="url" class="popup__input popup__input_control_card-url" placeholder="Ссылка на картинку" name="card-url" required />
-                    <span class="popup__input-error card-url-error"></span>
-                    <button class="popup__save-btn" type="submit">Сохранить</button>
-                </form>
-            </div>
-        </div>
-        <div id="avatar-edit-popup" class="popup">
-            <div class="popup__content">
-                <button class="popup__close-btn" type="button" aria-label="close"></button>
-                <form novalidate class="popup__content-form" name="popup__content-form" >
-                    <h3 class="popup__header">Обновить аватар</h3>
-                    <input type="url" class="popup__input popup__input_control_card-url" placeholder="Ссылка на картинку" name="avatar" required />
-                    <span class="popup__input-error avatar-error"></span>
-                    <button class="popup__save-btn" type="submit">Сохранить</button>
-                </form>
-            </div>
-        </div>
+        <PopUpWithForm name="profile-edit-popup" title="Редактировать профиль" isOpened={isProfilePopupOpened} onClose={closeAllPopups} onPopupClick={handlePopupClick}>
+            <input type="text" class="popup__input popup__input_control_profile-name" placeholder="Имя" name="name" minlength="2" maxlength="40" required />
+            <span class="popup__input-error name-error"></span>
+            <input type="text" class="popup__input popup__input_control_profile-job" placeholder="О себе" name="about" minlength="2" maxlength="200" required />
+            <span class="popup__input-error about-error"></span>
+        </PopUpWithForm>
+        <PopUpWithForm name="card-edit-popup" title="Новое место" isOpened={isCardPopupOpened} onClose={closeAllPopups} onPopupClick={handlePopupClick}>
+            <input type="text" class="popup__input popup__input_control_card-name" placeholder="Название" name="card-name" minlength="2" maxlength="30" required />
+            <span class="popup__input-error card-name-error"></span>
+            <input type="url" class="popup__input popup__input_control_card-url" placeholder="Ссылка на картинку" name="card-url" required />
+            <span class="popup__input-error card-url-error"></span>
+        </PopUpWithForm>
+        <PopUpWithForm name="avatar-edit-popup" title="Обновить аватар" isOpened={isAratarPopupOpened} onClose={closeAllPopups} onPopupClick={handlePopupClick}>
+            <input type="url" class="popup__input popup__input_control_card-url" placeholder="Ссылка на картинку" name="avatar" required />
+            <span class="popup__input-error avatar-error"></span>
+        </PopUpWithForm>
+
         <div id="image-popup" class="popup popup_dark">
             <div class="popup__content-img">
                 <button class="popup__close-btn" type="button" aria-label="close"></button>

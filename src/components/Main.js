@@ -1,33 +1,25 @@
-function Main(){
-
-
-    function handleEditAvatarClick(){
-
-        //this._popup.classList.add("popup_opened");          
-
-    }
-
+function Main({handleEditProfileClick, handleAddCardClick, handleEditAvatarClick}){
 
 
     return (
-        <main class="content">
-            <section class="profile root__profile">
-                <div class="profile__avatar-container">
-                    <img class="profile__avatar" src="#" alt="Аватар" />
-                    <button type="button" class="profile__avatar-edit-btn" onClick={handleEditAvatarClick}></button>
+        <main className="content">
+            <section className="profile root__profile">
+                <div className="profile__avatar-container">
+                    <img className="profile__avatar" src="#" alt="Аватар" />
+                    <button type="button" className="profile__avatar-edit-btn" onClick={handleEditAvatarClick}></button>
                 </div>
                 
                 <div>
-                    <div class="profile__name-container">
-                        <h1 class="profile__name">Жак-Ив Кусто</h1>
-                        <button class="profile__edit-button" type="button" aria-label="edit"></button>
+                    <div className="profile__name-container">
+                        <h1 className="profile__name">Жак-Ив Кусто</h1>
+                        <button className="profile__edit-button" type="button" aria-label="edit" onClick={handleEditProfileClick}></button>
                     </div>
-                    <p class="profile__description">Исследователь океана</p>
+                    <p className="profile__description">Исследователь океана</p>
                 </div>
-                <button class="profile__add-button" type="button"></button>
+                <button className="profile__add-button" type="button" onClick={handleAddCardClick}></button>
             </section>
-            <section class="elements root__elements">
-                <ul class="elements__list">
+            <section className="elements root__elements">
+                <ul className="elements__list">
                 </ul>
             </section>
         </main>
