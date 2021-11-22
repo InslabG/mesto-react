@@ -4,6 +4,8 @@ import Header from './Header';
 import Footer from './Footer';
 import Main from './Main';
 import PopUpWithForm from './PopUpWithForm';
+import ImagePopup from './ImagePopup';
+import Api from '../utils/api'; 
 
 import constants from '../utils/constants.js';
 
@@ -82,13 +84,8 @@ function handleEditAvatarClick(){
             <span class="popup__input-error avatar-error"></span>
         </PopUpWithForm>
 
-        <div id="image-popup" class="popup popup_dark">
-            <div class="popup__content-img">
-                <button class="popup__close-btn" type="button" aria-label="close"></button>
-                <img class="popup__img" alt="image" src="#" />
-                <p class="popup__img-caption"></p>
-            </div>
-        </div>
+        <ImagePopup name="image-popup" />
+
         <div id="card-delete-confirm-popup" class="popup">
             <div class="popup__content">
                 <button class="popup__close-btn" type="button" aria-label="close"></button>
