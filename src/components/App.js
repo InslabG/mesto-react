@@ -2,7 +2,7 @@ import React from 'react';
 import Header from './Header';
 import Footer from './Footer';
 import Main from './Main';
-import PopUpWithForm from './PopUpWithForm';
+import PopupWithForm from './PopupWithForm';
 import ImagePopup from './ImagePopup';
 import constants from '../utils/constants.js';
 
@@ -62,25 +62,25 @@ function App() {
                 <Header />
                 <Main handleEditProfileClick={handleEditProfileClick} handleAddCardClick={handleAddCardClick} handleEditAvatarClick={handleEditAvatarClick} onCardClick={handleCardClick} />
                 <Footer />
-                <PopUpWithForm name="profile-edit-popup" title="Редактировать профиль" isOpened={isProfilePopupOpened} onClose={closeAllPopups} onPopupClick={handlePopupClick}>
+                <PopupWithForm name="profile-edit-popup" title="Редактировать профиль" isOpened={isProfilePopupOpened} onClose={closeAllPopups} onPopupClick={handlePopupClick}>
                     <input type="text" className="popup__input popup__input_control_profile-name" placeholder="Имя" name="name" minlength="2" maxlength="40" required />
                     <span className="popup__input-error name-error"></span>
                     <input type="text" className="popup__input popup__input_control_profile-job" placeholder="О себе" name="about" minlength="2" maxlength="200" required />
                     <span className="popup__input-error about-error"></span>
-                </PopUpWithForm>
-                <PopUpWithForm name="card-edit-popup" title="Новое место" isOpened={isCardPopupOpened} onClose={closeAllPopups} onPopupClick={handlePopupClick}>
+                </PopupWithForm>
+                <PopupWithForm name="card-edit-popup" title="Новое место" isOpened={isCardPopupOpened} onClose={closeAllPopups} onPopupClick={handlePopupClick}>
                     <input type="text" className="popup__input popup__input_control_card-name" placeholder="Название" name="card-name" minlength="2" maxlength="30" required />
                     <span className="popup__input-error card-name-error"></span>
                     <input type="url" className="popup__input popup__input_control_card-url" placeholder="Ссылка на картинку" name="card-url" required />
                     <span className="popup__input-error card-url-error"></span>
-                </PopUpWithForm>
-                <PopUpWithForm name="avatar-edit-popup" title="Обновить аватар" isOpened={isAratarPopupOpened} onClose={closeAllPopups} onPopupClick={handlePopupClick}>
+                </PopupWithForm>
+                <PopupWithForm name="avatar-edit-popup" title="Обновить аватар" isOpened={isAratarPopupOpened} onClose={closeAllPopups} onPopupClick={handlePopupClick}>
                     <input type="url" className="popup__input popup__input_control_card-url" placeholder="Ссылка на картинку" name="avatar" required />
                     <span className="popup__input-error avatar-error"></span>
-                </PopUpWithForm>
+                </PopupWithForm>
                 <ImagePopup name="image-popup" card={selectedCard} onClose={closeAllPopups} onPopupClick={handlePopupClick} />
-                <PopUpWithForm name="card-delete-confirm-popup" title="Вы уверены?" buttonTitle="Да" />
-                <PopUpWithForm name="error-message-popup" title="УПС! Что-то пошло не так :(" buttonTitle="Да" />
+                <PopupWithForm name="card-delete-confirm-popup" title="Вы уверены?" buttonTitle="Да" />
+                <PopupWithForm name="error-message-popup" title="УПС! Что-то пошло не так :(" buttonTitle="Да" />
             </div>
         </div>
     );

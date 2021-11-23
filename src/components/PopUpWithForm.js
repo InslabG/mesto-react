@@ -1,4 +1,4 @@
-function PopUpWithForm({name, title, buttonTitle = 'Сохранить', isOpened, onClose, onPopupClick,  children}) {
+function PopupWithForm({name, title, buttonTitle = 'Сохранить', isOpened, onClose, onPopupClick,  children}) {
 
     return (
         <div id={name} className={`popup ${isOpened ? 'popup_opened' : ''}`} onClick={onPopupClick}>
@@ -14,4 +14,4 @@ function PopUpWithForm({name, title, buttonTitle = 'Сохранить', isOpene
     );
 }
 
-export default PopUpWithForm;
+export default PopupWithForm;
