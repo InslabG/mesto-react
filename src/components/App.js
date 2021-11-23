@@ -39,7 +39,7 @@ function App() {
         setIsProfilePopupOpened(false);
         setIsCardPopupOpened(false);
         setIsAvatarPopupOpened(false);
-        setSelectedCard(undefined);
+        setSelectedCard(null);
     }
 
 
@@ -63,13 +63,13 @@ function App() {
                 <Main handleEditProfileClick={handleEditProfileClick} handleAddCardClick={handleAddCardClick} handleEditAvatarClick={handleEditAvatarClick} onCardClick={handleCardClick} />
                 <Footer />
                 <PopupWithForm name="profile-edit-popup" title="Редактировать профиль" isOpened={isProfilePopupOpened} onClose={closeAllPopups} onPopupClick={handlePopupClick}>
-                    <input type="text" className="popup__input popup__input_control_profile-name" placeholder="Имя" name="name" minlength="2" maxlength="40" required />
+                    <input type="text" className="popup__input popup__input_control_profile-name" placeholder="Имя" name="name" minLength="2" maxLength="40" required />
                     <span className="popup__input-error name-error"></span>
-                    <input type="text" className="popup__input popup__input_control_profile-job" placeholder="О себе" name="about" minlength="2" maxlength="200" required />
+                    <input type="text" className="popup__input popup__input_control_profile-job" placeholder="О себе" name="about" minLength="2" maxLength="200" required />
                     <span className="popup__input-error about-error"></span>
                 </PopupWithForm>
                 <PopupWithForm name="card-edit-popup" title="Новое место" isOpened={isCardPopupOpened} onClose={closeAllPopups} onPopupClick={handlePopupClick}>
-                    <input type="text" className="popup__input popup__input_control_card-name" placeholder="Название" name="card-name" minlength="2" maxlength="30" required />
+                    <input type="text" className="popup__input popup__input_control_card-name" placeholder="Название" name="card-name" minLength="2" maxLength="30" required />
                     <span className="popup__input-error card-name-error"></span>
                     <input type="url" className="popup__input popup__input_control_card-url" placeholder="Ссылка на картинку" name="card-url" required />
                     <span className="popup__input-error card-url-error"></span>

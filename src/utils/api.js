@@ -52,6 +52,6 @@ class classApi {
 
 }
 
-const Api = new classApi({ baseUrl: constants.baseUrl, headers: constants.defaultHeaders });
+const api = new classApi({ baseUrl: constants.baseUrl, headers: constants.defaultHeaders });
 
-export default Api;
+export default api;

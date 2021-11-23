@@ -1,5 +1,6 @@
 .body {
   background-color: #000000;
+  min-height: 100vh;
 }
 
 /*div, h1, h2, h3, p, a, img, ul, li, section, button {
