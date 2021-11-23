@@ -1,12 +1,11 @@
-
-function ImagePopup({name}) {
+function ImagePopup({name, card, onClose, onPopupClick}) {
     
     return (
-        <div id={name} class="popup popup_dark">
-            <div class="popup__content-img">
-                <button class="popup__close-btn" type="button" aria-label="close"></button>
-                <img class="popup__img" alt="image" src="#" />
-                <p class="popup__img-caption"></p>
+        <div id={name} className={`popup popup_dark ${card ? 'popup_opened' : ''}`} onClick={onPopupClick} >
+            <div className="popup__content-img">
+                <button className="popup__close-btn" type="button" aria-label="close" onClick={onClose}></button>
+                <img className="popup__img" alt="image" src={card ? card.link : "#"} alt={card ? card.name : ""} />
+                <p className="popup__img-caption"></p>
             </div>
         </div>
 

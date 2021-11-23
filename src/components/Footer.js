@@ -1,8 +1,7 @@
-
 function Footer() {
     return (
-    <footer class="footer root__footer">
-        <p class="footer__copyright">© 2021 Mesto Russia</p>
+    <footer className="footer root__footer">
+        <p className="footer__copyright">© 2021 Mesto Russia</p>
     </footer>
     );
 }
