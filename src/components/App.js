@@ -11,7 +11,7 @@ function App() {
     const [isProfilePopupOpened, setIsProfilePopupOpened] = React.useState(false);
     const [isCardPopupOpened, setIsCardPopupOpened] = React.useState(false);
     const [isAratarPopupOpened, setIsAvatarPopupOpened] = React.useState(false);
-    const [selectedCard, setSelectedCard] = React.useState(undefined);
+    const [selectedCard, setSelectedCard] = React.useState(null);
 
     function handlePopupClick(evt) {
         if ((evt.target.classList.contains('popup') || evt.target.classList.contains('popup__close-btn')) && evt.button === constants.MOUSE_LEFT_BTN_CODE) {
