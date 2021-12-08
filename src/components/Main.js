@@ -1,40 +1,29 @@
 import React from "react";
-import Api from "../utils/api";
 import Card from "./Card";
+import { UserContext } from './contexts/CurrentUserContext';
 
 function Main({handleEditProfileClick, handleAddCardClick, handleEditAvatarClick, onCardClick}){
 
-    const [userName, setUserName] = React.useState("");
-    const [userInfo, setUserInfo] = React.useState("");
-    const [userAvatar, setUserAvatar] = React.useState("");
     const [cards, setCards] = React.useState([]);
 
-    React.useEffect(() => {
-        Promise.all([Api.getUser(), Api.getInitialCards()]).then(
-            data => {
-                setUserName(data[0].name);
-                setUserInfo(data[0].about);
-                setUserAvatar(data[0].avatar);
-                setCards(data[1]);
-            }
-          ).catch(error => console.error(error));
-      
-    }, []);
+    const currentUser = React.useContext(UserContext);
+
+    console.log(currentUser);
 
     return (
         <main className="content">
             <section className="profile root__profile">
                 <div className="profile__avatar-container">
-                    <img className="profile__avatar" src={userAvatar} alt="Аватар" />
+                    <img className="profile__avatar" src={currentUser.avatar} alt="Аватар" />
                     <button type="button" className="profile__avatar-edit-btn" onClick={handleEditAvatarClick}></button>
                 </div>
                 
                 <div>
                     <div className="profile__name-container">
-                        <h1 className="profile__name">{userName}</h1>
+                        <h1 className="profile__name">{currentUser.name}</h1>
                         <button className="profile__edit-button" type="button" aria-label="edit" onClick={handleEditProfileClick}></button>
                     </div>
-                    <p className="profile__description">{userInfo}</p>
+                    <p className="profile__description">{currentUser.about}</p>
                 </div>
                 <button className="profile__add-button" type="button" onClick={handleAddCardClick}></button>
             </section>
