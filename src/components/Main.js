@@ -8,8 +8,6 @@ function Main({handleEditProfileClick, handleAddCardClick, handleEditAvatarClick
 
     const currentUser = React.useContext(UserContext);
 
-    console.log(currentUser);
-
     return (
         <main className="content">
             <section className="profile root__profile">
