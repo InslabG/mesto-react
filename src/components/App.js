@@ -53,11 +53,11 @@ function App() {
     }
 
     function handleUpdateUser(user) {
-        Api.updateUser(user).then(data => { setCurrentUser(data); closeAllPopups(); });
+        Api.updateUser(user).then(data => { setCurrentUser(data); closeAllPopups(); }).catch(error => console.error(error));
     }
 
     function handleUpdateAvatar(avatar) {
-        Api.updateAvatar(avatar).then(data => { setCurrentUser(data); closeAllPopups(); });
+        Api.updateAvatar(avatar).then(data => { setCurrentUser(data); closeAllPopups(); }).catch(error => console.error(error));
     }
 
     function handleCardLike(card) {
@@ -67,16 +67,16 @@ function App() {
         
         // Отправляем запрос в API и получаем обновлённые данные карточки
         const updateLikePromise = isLiked ? Api.deleteLike(card._id) : Api.addLike(card._id);
-        updateLikePromise.then((newCard) => { setCards((state) => state.map((c) => c._id === card._id ? newCard : c)) });
+        updateLikePromise.then((newCard) => { setCards((state) => state.map((c) => c._id === card._id ? newCard : c)) }).catch(error => console.error(error));
     } 
 
     function handleCardDelete(card) {
-        Api.deleteCard(card._id).then(data => { setCards(cards.filter(c => c._id !== card._id)); });
+        Api.deleteCard(card._id).then(data => { setCards(cards.filter(c => c._id !== card._id)); }).catch(error => console.error(error));
     }
 
 
     function handleAddPlaceSubmit(card) {
-        Api.addCard(card).then(data => { setCards([data, ...cards]); closeAllPopups(); });
+        Api.addCard(card).then(data => { setCards([data, ...cards]); closeAllPopups(); }).catch(error => console.error(error));
     }
 
 
